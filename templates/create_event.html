@@ -1,0 +1,42 @@
+{% extends 'kizuna_base.html' %}
+
+{% block title %}
+Manage
+{% endblock %}
+
+{% block body %}
+
+<div class="event-form">
+    <h1>Create a New Event</h1>
+    <form action="/create_event" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+
+        <label for="image_url">Image URL:</label>
+        <input type="text" id="image_url" name="image_url" required><br>
+
+        <input type="submit" value="Create Event">
+    </form>
+</div>
+
+
+<div class="event-container">
+    <h2>Events</h2>
+    {% for event in events %}
+    <div class="event">
+        <div class="event-image">
+            <img src="{{ event.image_url }}" alt="{{ event.title }}">
+        </div>
+        <div class="event-details">
+            <h2>{{ event.title }}</h2>
+            <p>{{ event.description }}</p>
+            <a href="{{ url_for('delete_event', id=event.id) }}">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

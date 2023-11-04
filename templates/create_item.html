@@ -1,0 +1,43 @@
+{% extends 'kizuna_base.html' %}
+
+{% block title %}
+Create item
+{% endblock %}
+
+{% block body %}
+
+
+<div class="item-form-container">
+    <h2>Create new product</h2>
+    <form class="item-form" method="POST" action="/create_item">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-input" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-input" id="description" name="description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-input" id="price" name="price" required>
+        </div>
+        <div class="form-group">
+            <label for="image_url">Link to the img:</label>
+            <input type="text" class="form-input" id="image_url" name="image_url" required>
+        </div>
+        <button type="submit" class="form-button">Create product</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

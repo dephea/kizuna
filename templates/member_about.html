@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ member.title }}
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container-xxl">
+    <h1><center>About {{ member.title }}</center></h1>
+    <center>
+        <div class="alert ">
+             <h4>{{ member.text }}</h4><br>
+             <p><b>{{ member.date.date() }}</b></p>
+        </div>
+    </center>
+</div>
+
+{% endblock %}
