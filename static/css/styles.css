@@ -5,20 +5,44 @@
     box-sizing: border-box;
 }
 
+/* Скрыть полосу прокрутки в Chrome, Safari и Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Скрыть полосу прокрутки в IE, Edge и Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
 body {
     font-family: 'Raleway', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: #ffdcd1;
 }
 
 header {
-    background-color: #007bff;
+    background-color: #d16645;
     color: white;
     padding: 1rem;
     text-align: center;
 
+}
+
+.header-text {
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 19px;
+    color: white;
+}
+
+.header-text:hover {
+    color: #ffcc00; /* Изменяем цвет текста при наведении */
+    transform: scale(1.05); /* Немного увеличиваем текст */
+    cursor: pointer; /* Изменяем курсор, чтобы указать на кликабельность */
 }
 
 nav ul {
@@ -36,7 +60,7 @@ nav ul li a {
 }
 
 footer {
-    background-color: #f8f9fa;
+    background-color: #ffdcd1;
     padding: 1rem;
     text-align: center;
 }
@@ -94,11 +118,12 @@ form input[type="submit"] {
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
+    border-radius: 15px; /* Это значение добавит закругление */
 }
 
 .event-image {
     flex: 0 0 200px;
-    background-color: #007bff;
+    background-color: #ffdcd1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,6 +135,8 @@ form input[type="submit"] {
     object-position: center; /* Центрировать изображение */
     width: 100%;
     height: 100%;
+    border-top-left-radius: 15px; /* Закругление верхнего левого угла */
+    border-bottom-left-radius: 15px; /* Закругление нижнего левого угла */
 }
 
 .event-details {
@@ -121,7 +148,7 @@ form input[type="submit"] {
 h2 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #007bff;
+    color: #a64e33;
 }
 
 p {
