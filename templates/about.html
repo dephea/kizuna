@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'kizuna_base.html' %}
 
 {% block title %}
 About us
@@ -7,17 +7,16 @@ About us
 {% block body %}
 
 
-<div class="container-xxl">
-<h1><center>About us</center></h1>
-    <div class="row">
-    <div class="col-2">
-      <img src="/static/img/cat.jpg" class="img img-thumbnail" alt="cat">
-      <center>dephea</center>
+<div class="event-container">
+    <div class="event hidden">
+        <div class="event-image">
+            <img src="/static/img/cat.jpg" alt="cat">
+        </div>
+        <div class="event-details">
+            <p>I want to learn programming. I don't even like to do sites but I guess I have to learn web stuff first.</p>
+        </div>
     </div>
-    <div class="col">
-      <p>I want to learn programming. I don't even like to do sites but I guess I have to learn web stuff first.</p>
-    </div>
-  </div>
 </div>
+
 
 {% endblock %}

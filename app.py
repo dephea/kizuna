@@ -13,15 +13,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
-class Article(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    text = db.Column(db.Text, nullable=False)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return '<Article %r>' % self.id
-
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -46,12 +37,9 @@ class Item(db.Model):
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template("index.html")
-
-@app.route('/kizuna')
-def kizuna():
     events = Event.query.all()
     return render_template("kizuna_home.html", events=events)
+
 
 @app.route('/store')
 def store():
@@ -79,7 +67,6 @@ def create_item():
             return "ERROR WHILE ADDING A NEW PRODUCT"
     else:
         return render_template("create_item.html", items=items)
-
 
 
 @app.route('/create_event', methods=['POST', 'GET'])
@@ -112,75 +99,9 @@ def delete_event(id):
     except:
         return "ERROR WHILE DELETING THE EVENT"
 
-
-
-
-
-
-
-
-
-
-@app.route('/member')
-def member():
-    members = Article.query.order_by(Article.date).all()
-    return render_template("member.html", members=members)
-
-@app.route('/member/<int:id>')
-def member_about(id):
-    member = Article.query.get(id)
-    return render_template("member_about.html", member=member)
-
-@app.route('/member/<int:id>/del')
-def member_delete(id):
-    member = Article.query.get_or_404(id)
-
-    try:
-        db.session.delete(member)
-        db.session.commit()
-        return redirect('/member')
-    except:
-        return "ERROR WHILE DELETING A MEMBER"
-
-
 @app.route('/about')
 def about():
     return render_template("about.html")
-
-@app.route('/create-article', methods=['POST', 'GET'])
-def create_article():
-    if request.method == "POST":
-        title = request.form['title']
-        text = request.form['text']
-
-        article = Article(title=title, text=text)
-
-        try:
-            db.session.add(article)
-            db.session.commit()
-            return redirect('/member')
-        except:
-            return "ERROR WHILE ADDING A NEW MEMBER"
-    else:
-        return render_template("create-article.html")
-
-
-@app.route('/member/<int:id>/update', methods=['POST', 'GET'])
-def member_update(id):
-    member = Article.query.get(id)
-    if request.method == "POST":
-        member.title = request.form['title']
-        member.text = request.form['text']
-
-        try:
-            db.session.commit()
-            return redirect("/member")
-        except:
-            return "ERROR WHILE ADDING A NEW MEMBER"
-    else:
-        return render_template("member_update.html", member=member)
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
