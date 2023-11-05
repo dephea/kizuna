@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect, Response
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+#from datetime import datetime
 from flask_migrate import Migrate
 
 
@@ -83,7 +83,7 @@ def create_event():
         try:
             db.session.add(event)
             db.session.commit()
-            return redirect('/kizuna')
+            return redirect('/')
         except:
             return "ERROR WHILE ADDING A NEW EVENT"
     else:
