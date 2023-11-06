@@ -221,6 +221,72 @@ p {
     margin-bottom: 10px;
 }
 
+.cart {
+  z-index: 1000; /* Убедитесь, что корзина будет поверх других элементов */
+  position: fixed; /* Закрепляем корзину */
+  bottom: 20px; /* Отступ снизу */
+  right: 20px; /* Отступ справа */
+  width: 300px; /* Ширина корзины */
+  background-color: #ffea9e; /* Цвет фона корзины */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Тень для корзины, чтобы выделялась */
+  border-radius: 8px; /* Скругление углов */
+  padding: 20px; /* Внутренний отступ в корзине */
+  overflow-y: auto; /* Полоса прокрутки, если содержимое переполняет видимую область */
+  max-height: 80%; /* Максимальная высота корзины */
+}
+
+
+.toggle-cart {
+  float: right; /* Кнопка будет справа от заголовка */
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.cart h2 { /* Стили для заголовка в корзине */
+  margin-top: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.cart ul {
+  list-style: none; /* Убираем маркеры списка */
+  padding: 0;
+  margin: 0;
+  background-color:#5cb85c;
+}
+
+.cart li {
+  border-bottom: 1px solid #eee; /* Горизонтальные разделители между элементами */
+  padding: 10px 0;
+}
+
+.cart button { /* Стилизация кнопок в корзине */
+  background-color: #5cb85c; /* Зеленый цвет кнопки */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cart button:hover { /* Стили для состояния наведения на кнопку */
+  background-color: #4cae4c;
+}
+
+/* Дополнительные стили, если нужно */
+
+
+
 .add-to-cart-button {
     background-color: #4caf50;
     color: white;

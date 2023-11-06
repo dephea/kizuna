@@ -6,6 +6,28 @@ Store
 
 {% block body %}
 
+<!-- Вставьте это в подходящее место в вашем store.html -->
+<div class="cart">
+
+    <div class="cart-header">
+        <h2>Cart</h2>
+        <button class="toggle-cart">-</button>
+    </div>
+
+    <div class="cart-content">
+            {% for item_id, quantity in session.cart.items() %}
+                {% set item = items|selectattr("id", "equalto", item_id|int)|first %}
+                <li>{{ item.name }} x {{ quantity }}</li>
+            {% endfor %}
+
+        <!-- Вы можете добавить общую стоимость, если хотите -->
+        <p><strong>Total:</strong> <!-- Вставьте сюда общую стоимость --></p>
+        <a class="add-to-cart-button" href="/checkout">Checkout</a>
+    </div>
+</div>
+
+
+
 <div class="item-container">
     {% for item in items %}
     <div class="item hidden">
@@ -13,7 +35,7 @@ Store
         <h2>{{ item.name }}</h2>
         <p>{{ item.description }}</p>
         <p>Price: ${{ item.price }}</p>
-        <button class="add-to-cart-button">Add to Cart</button>
+        <a href="{{ url_for('add_to_cart', item_id=item.id) }}" class="add-to-cart-button">Add to cart</a>
     </div>
     {% endfor %}
 </div>
